@@ -15,8 +15,7 @@ jobs:
     steps:
       - uses: olegtarasov/get-tag@v2
         id: tagName
-      - name: Yet another step # Environment variabl usage example
-        run: |
-          docker build . --file Dockerfile --tag andreaavanzi/docker-angular-cli:$GIT_TAG_NAME
+      - name: Build docker image
+        run: docker build . --file Dockerfile --tag andreaavanzi/docker-angular-cli:${{ steps.tagName.outputs.tag }}
       - name: Push the Docker image
-        run: docker push andreaavanzi/alpine-awscli-kubectl:$GIT_TAG_NAME
+        run: docker push andreaavanzi/docker-angular-cli:${{ steps.tagName.outputs.tag }}
