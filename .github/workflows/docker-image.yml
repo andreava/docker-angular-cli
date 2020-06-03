@@ -16,6 +16,6 @@ jobs:
       - uses: olegtarasov/get-tag@v2
         id: tagName
       - name: Build docker image
-        run: docker build . --file Dockerfile --tag andreaavanzi/docker-angular-cli:${{ steps.tagName.outputs.tag }}
+        run: docker build . --file Dockerfile --tag andreaavanzi/docker-angular-cli:9.1.6
       - name: Push the Docker image
-        run: docker push andreaavanzi/docker-angular-cli:${{ steps.tagName.outputs.tag }}
+        run: docker push andreaavanzi/docker-angular-cli:9.1.6
